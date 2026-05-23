@@ -1,4 +1,4 @@
-// src/components/ContactForm/ContactForm.tsx
+
 import React from 'react';
 import { useContactForm } from '../hooks/useForm';
 
@@ -39,7 +39,7 @@ export const ContactForm: React.FC = () => {
       
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
         
-        {/* Campo: Nombre */}
+       
         <div className="flex flex-col gap-1.5">
           <label htmlFor="nombre" className="text-sm font-semibold text-gray-700">
             Nombre:
@@ -63,7 +63,7 @@ export const ContactForm: React.FC = () => {
           )}
         </div>
 
-        {/* Campo: Email */}
+       
         <div className="flex flex-col gap-1.5">
           <label htmlFor="email" className="text-sm font-semibold text-gray-700">
             Correo Electrónico:
@@ -87,7 +87,7 @@ export const ContactForm: React.FC = () => {
           )}
         </div>
 
-        {/* Campo: Mensaje */}
+     
         <div className="flex flex-col gap-1.5">
           <label htmlFor="Mensaje" className="text-sm font-semibold text-gray-700">
             Mensaje:
@@ -97,7 +97,6 @@ export const ContactForm: React.FC = () => {
             name="Mensaje"
             value={Formulario.Mensaje}
             onChange={handleChange}
-            placeholder="Cuéntame sobre tu proyecto..."
             className={`w-full min-h-40 resize-none px-4 py-2.5 h-[400-px] text-gray-800 bg-gray-50 border rounded-lg outline-none  
               transition duration-200 focus:bg-white focus:ring-2
               ${errores.Mensaje 
@@ -110,7 +109,7 @@ export const ContactForm: React.FC = () => {
           )}
         </div>
 
-        {/* Botón de Enviar */}
+        
         <button
           type="submit"
           disabled={!isFormValid}
