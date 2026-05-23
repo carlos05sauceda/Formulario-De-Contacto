@@ -1,0 +1,128 @@
+// src/components/ContactForm/ContactForm.tsx
+import React from 'react';
+import { useContactForm } from '../hooks/useForm';
+
+export const ContactForm: React.FC = () => {
+  const {
+    Formulario,
+    errores,
+    Enviar,
+    isFormValid,
+    handleChange,
+    handleSubmit,
+    resetForm,
+  } = useContactForm();
+
+
+  if (Enviar) {
+    return (
+      <div className="max-w-md mx-auto my-8 p-8 text-center rounded-lg border border-green-200
+       bg-green-50 text-green-800 shadow-md animate-fade-in">
+        <h2 className="text-xl font-bold mb-4">
+          ¡Gracias por tu mensaje! Carlos se pondrá en contacto pronto.
+        </h2>
+        <button 
+          onClick={resetForm} 
+          className="mt-2 px-6 py-2.5 bg-green-700 hover:bg-green-800 text-white font-semibold rounded-md shadow transition duration-200"
+        >
+          Enviar otro mensaje
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-md mx-auto my-8 p-8 rounded-xl bg-white border border-gray-100 shadow-xl">
+      <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+        Contacto 
+      </h2>
+      
+      <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+        
+        {/* Campo: Nombre */}
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="nombre" className="text-sm font-semibold text-gray-700">
+            Nombre:
+          </label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            value={Formulario.nombre}
+            onChange={handleChange}
+            placeholder="Tu nombre completo"
+            className={`w-full px-4 py-2.5 text-gray-800 bg-gray-50 border rounded-lg outline-none transition duration-200
+               focus:bg-white focus:ring-2
+              ${errores.nombre 
+                ? 'border-red-400 focus:border-red-500 focus:ring-red-100' 
+                : 'border-gray-200 focus:border-blue-500 focus:ring-blue-100'
+              }`}
+          />
+          {errores.nombre && (
+            <span className="text-xs font-medium text-red-500 mt-1">{errores.nombre}</span>
+          )}
+        </div>
+
+        {/* Campo: Email */}
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="email" className="text-sm font-semibold text-gray-700">
+            Correo Electrónico:
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={Formulario.email}
+            onChange={handleChange}
+            placeholder="correo@ejemplo.com"
+            className={`w-full px-4 py-2.5 text-gray-800 bg-gray-50 border rounded-lg outline-none transition duration-200
+               focus:bg-white focus:ring-2
+              ${errores.email 
+                ? 'border-red-400 focus:border-red-500 focus:ring-red-100' 
+                : 'border-gray-200 focus:border-blue-500 focus:ring-blue-100'
+              }`}
+          />
+          {errores.email && (
+            <span className="text-xs font-medium text-red-500 mt-1">{errores.email}</span>
+          )}
+        </div>
+
+        {/* Campo: Mensaje */}
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="Mensaje" className="text-sm font-semibold text-gray-700">
+            Mensaje:
+          </label>
+          <textarea
+            id="Mensaje"
+            name="Mensaje"
+            value={Formulario.Mensaje}
+            onChange={handleChange}
+            placeholder="Cuéntame sobre tu proyecto..."
+            className={`w-full min-h-40 resize-none px-4 py-2.5 h-[400-px] text-gray-800 bg-gray-50 border rounded-lg outline-none  
+              transition duration-200 focus:bg-white focus:ring-2
+              ${errores.Mensaje 
+                ? 'border-red-400 focus:border-red-500 focus:ring-red-100' 
+                : 'border-gray-200 focus:border-blue-500 focus:ring-blue-100'
+              }`}
+          />
+          {errores.Mensaje && (
+            <span className="text-xs font-medium text-red-500 mt-1">{errores.Mensaje}</span>
+          )}
+        </div>
+
+        {/* Botón de Enviar */}
+        <button
+          type="submit"
+          disabled={!isFormValid}
+          className={`w-full mt-2 py-3 font-bold rounded-lg shadow transition duration-200 tracking-wide
+            ${isFormValid 
+              ? 'bg-blue-600 hover:bg-blue-700 text-white cursor-pointer hover:shadow-md' 
+              : 'bg-gray-200 text-gray-400 cursor-not-allowed shadow-none'
+            }`}
+        >
+          Enviar Mensaje
+        </button>
+      </form>
+    </div>
+  );
+};
