@@ -16,10 +16,10 @@ export const ContactForm: React.FC = () => {
 
   if (Enviar) {
     return (
-      <div className="max-w-md mx-auto my-8 p-8 text-center rounded-lg border border-green-200
-       bg-green-50 text-green-800 shadow-md animate-fade-in">
+      <div className="max-w-md mx-auto my-8 p-8 text-center rounded-lg border border-blue-200
+       bg-blue-50 text-green-800 shadow-md animate-fade-in">
         <h2 className="text-xl font-bold mb-4">
-          ¡Gracias por tu mensaje! Carlos se pondrá en contacto pronto.
+          ¡Gracias por tu mensaje! Nos pondremos en contacto contigo.
         </h2>
         <button 
           onClick={resetForm} 
